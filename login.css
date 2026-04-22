@@ -93,6 +93,18 @@ input[type="password"]:focus {
 	border-color: var(--primary);
 }
 
+.input-error {
+	border-color: #c62828 !important;
+	outline: none;
+}
+
+.error-message {
+	font-size: 0.84rem;
+	font-weight: 600;
+	color: #c62828;
+	margin-top: 2px;
+}
+
 .utility-row {
 	display: flex;
 	justify-content: flex-end;
