@@ -8,6 +8,7 @@ $username = 'root';
 $password = '';
 $charset = 'utf8mb4';
 
+$serverDsn = "mysql:host={$host};charset={$charset}";
 $dsn = "mysql:host={$host};dbname={$dbName};charset={$charset}";
 
 $options = [
@@ -17,6 +18,10 @@ $options = [
 ];
 
 try {
+    $serverPdo = new PDO($serverDsn, $username, $password, $options);
+    $serverPdo->exec("CREATE DATABASE IF NOT EXISTS `{$dbName}` CHARACTER SET {$charset} COLLATE utf8mb4_unicode_ci");
+    $serverPdo = null;
+
     $pdo = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
     // Log detailed error internally while showing a safe message to users.

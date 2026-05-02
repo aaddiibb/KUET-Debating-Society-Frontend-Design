@@ -61,6 +61,27 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.flash-message {
+	font-size: 0.9rem;
+	font-weight: 700;
+	padding: 10px 12px;
+	border-radius: 8px;
+	margin-bottom: 16px;
+	border: 1px solid transparent;
+}
+
+.flash-success {
+	color: #1f6b36;
+	background: #ecf8ef;
+	border-color: #bfe3c8;
+}
+
+.flash-error {
+	color: #b42318;
+	background: #fef3f2;
+	border-color: #fecdca;
+}
+
 .login-form {
 	display: grid;
 	gap: 14px;

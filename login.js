@@ -3,7 +3,30 @@ const loginForm = document.querySelector('.login-form');
 if (loginForm) {
 	const emailInput = document.getElementById('email');
 	const passwordInput = document.getElementById('password');
+	const flashMessage = document.querySelector('[data-flash-message]');
 	const fields = [emailInput, passwordInput];
+
+	function showFlashMessage(message, type) {
+		if (!flashMessage || !message) {
+			return;
+		}
+
+		flashMessage.textContent = message;
+		flashMessage.classList.remove('flash-success', 'flash-error');
+		flashMessage.classList.add('flash-message', type === 'error' ? 'flash-error' : 'flash-success');
+		flashMessage.hidden = false;
+	}
+
+	const loginUrl = new URL(window.location.href);
+	const signupStatus = loginUrl.searchParams.get('signup');
+	const flashText = loginUrl.searchParams.get('message');
+
+	if (signupStatus === 'success' && flashText) {
+		showFlashMessage(flashText, 'success');
+		loginUrl.searchParams.delete('signup');
+		loginUrl.searchParams.delete('message');
+		window.history.replaceState({}, '', loginUrl.toString());
+	}
 
 	function getErrorElement(field) {
 		const container = field.closest('.form-group') || field.parentElement;

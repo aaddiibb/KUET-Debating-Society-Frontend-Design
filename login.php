@@ -55,6 +55,23 @@ function render_login_page(string $errorMessage, string $emailValue): void
     echo '</html>';
 }
 
+function ensure_members_table(PDO $pdo): void
+{
+    $pdo->exec(
+        'CREATE TABLE IF NOT EXISTS members (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            full_name VARCHAR(255) NOT NULL,
+            student_id VARCHAR(20) NOT NULL,
+            department VARCHAR(100) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            password_hash VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY uniq_members_email (email),
+            UNIQUE KEY uniq_members_student_id (student_id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
+    );
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     render_login_page('', '');
     exit;
@@ -68,43 +85,29 @@ if ($emailValue === '' || $password === '') {
     exit;
 }
 
-$candidateTables = ['members', 'member', 'users'];
-$member = null;
+ensure_members_table($pdo);
 
-foreach ($candidateTables as $tableName) {
-    try {
-        $statement = $pdo->prepare("SELECT * FROM {$tableName} WHERE email = :email LIMIT 1");
-        $statement->execute(['email' => $emailValue]);
-        $member = $statement->fetch();
+$statement = $pdo->prepare('SELECT id, full_name, email, password_hash FROM members WHERE email = :email LIMIT 1');
+$statement->execute(['email' => $emailValue]);
+$member = $statement->fetch();
 
-        if ($member !== false) {
-            break;
-        }
-    } catch (PDOException $exception) {
-        $message = $exception->getMessage();
-        if (stripos($message, 'doesn\'t exist') === false && stripos($message, 'Base table or view not found') === false) {
-            throw $exception;
-        }
-    }
-}
-
-if ($member === false || $member === null) {
+if ($member === false) {
     render_login_page('Invalid email or password.', $emailValue);
     exit;
 }
 
-$memberPasswordHash = $member['password'] ?? $member['password_hash'] ?? $member['hashed_password'] ?? '';
+$memberPasswordHash = (string) ($member['password_hash'] ?? '');
 
-if (!is_string($memberPasswordHash) || $memberPasswordHash === '' || !password_verify($password, $memberPasswordHash)) {
+if ($memberPasswordHash === '' || !password_verify($password, $memberPasswordHash)) {
     render_login_page('Invalid email or password.', $emailValue);
     exit;
 }
 
-$memberId = $member['id'] ?? $member['member_id'] ?? $member['memberId'] ?? null;
-$memberName = $member['name'] ?? $member['full_name'] ?? $member['fullName'] ?? $member['member_name'] ?? '';
-$memberEmail = $member['email'] ?? $emailValue;
+$memberId = $member['id'] ?? null;
+$memberName = (string) ($member['full_name'] ?? '');
+$memberEmail = (string) ($member['email'] ?? $emailValue);
 
-if ($memberId === null || $memberName === '' || $memberEmail === '') {
+if (empty($memberId) || $memberName === '' || $memberEmail === '') {
     render_login_page('Your account record is missing required profile data.', $emailValue);
     exit;
 }

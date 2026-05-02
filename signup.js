@@ -112,12 +112,14 @@ if (signupForm) {
 	});
 
 	signupForm.addEventListener('submit', (event) => {
-		event.preventDefault();
 		fields.forEach(clearFieldError);
 
 		const isValid = validateSignupForm();
 		if (isValid) {
 			console.log('Signup form validation passed.');
+			return;
 		}
+
+		event.preventDefault();
 	});
 }
