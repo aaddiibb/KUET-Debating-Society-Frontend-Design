@@ -1,3 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+session_start();
+
+if (empty($_SESSION['member_id']) || empty($_SESSION['member_name']) || empty($_SESSION['member_email'])) {
+    header('Location: login.html');
+    exit;
+}
+
+$memberName = htmlspecialchars((string) $_SESSION['member_name'], ENT_QUOTES, 'UTF-8');
+$memberEmail = htmlspecialchars((string) $_SESSION['member_email'], ENT_QUOTES, 'UTF-8');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,14 +27,14 @@
 				<span class="brand-mark" aria-hidden="true"></span>
 				<span>KUET Debating Society</span>
 			</div>
-			<a href="login.html" class="logout-link">Logout</a>
+			<a href="logout.php" class="logout-link">Logout</a>
 		</div>
 	</header>
 
 	<main class="dashboard-main">
 		<section class="wrap welcome-section reveal" aria-labelledby="welcome-title">
 			<p class="kicker">Member Area</p>
-			<h1 id="welcome-title">Welcome back, <span class="member-name">Adib</span></h1>
+			<h1 id="welcome-title">Welcome back, <span class="member-name"><?php echo $memberName; ?></span></h1>
 			<p class="welcome-text">
 				Track your upcoming club activities, read latest announcements, and view your profile details in one place.
 			</p>
@@ -66,11 +80,11 @@
 			<article class="card info-card" aria-labelledby="profile-title">
 				<h2 id="profile-title">Member Profile Summary</h2>
 				<div class="profile-grid">
-					<p><span>Name:</span> Adib</p>
+					<p><span>Name:</span> <?php echo $memberName; ?></p>
 					<p><span>Department:</span> CSE</p>
 					<p><span>Membership:</span> Active</p>
 					<p><span>Joined:</span> January 2026</p>
-					<p><span>Email:</span> member@kuet.ac.bd</p>
+					<p><span>Email:</span> <?php echo $memberEmail; ?></p>
 				</div>
 			</article>
 		</section>

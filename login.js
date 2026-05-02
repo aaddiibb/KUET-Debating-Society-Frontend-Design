@@ -64,12 +64,14 @@ if (loginForm) {
 	});
 
 	loginForm.addEventListener('submit', (event) => {
-		event.preventDefault();
 		fields.forEach(clearFieldError);
 
 		const isValid = validateLoginForm();
 		if (isValid) {
 			console.log('Login form validation passed.');
+			return;
 		}
+
+		event.preventDefault();
 	});
 }
