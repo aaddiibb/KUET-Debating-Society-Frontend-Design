@@ -86,8 +86,95 @@
 	box-shadow: 0 12px 28px rgba(216, 154, 39, 0.34);
 }
 
+.contact-details {
+	list-style: none;
+	display: grid;
+	gap: 12px;
+}
+
+.detail-label {
+	display: block;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.82rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--accent-deep);
+	margin-bottom: 2px;
+}
+
+.detail-value {
+	color: var(--muted);
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+
+a.detail-value:hover {
+	color: var(--ink);
+	text-decoration: underline;
+}
+
+.social-list {
+	list-style: none;
+	display: grid;
+	gap: 8px;
+	margin-top: 6px;
+}
+
+.social-link {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.9rem;
+	color: var(--highlight);
+	text-decoration: none;
+}
+
+.social-link:hover {
+	text-decoration: underline;
+}
+
+.faq-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.faq-card h3 {
+	font-size: 1rem;
+	margin-bottom: 8px;
+	color: var(--accent-deep);
+}
+
+.faq-card p {
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+/* Override subject to use select element */
+.contact-form select {
+	width: 100%;
+	padding: 11px 12px;
+	border: 1px solid #cfd6c9;
+	border-radius: 10px;
+	background: #fffefb;
+	color: var(--ink);
+	font: inherit;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234f5f78' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+}
+
+.contact-form select:focus {
+	outline: none;
+	border-color: var(--highlight);
+	box-shadow: 0 0 0 3px rgba(45, 143, 139, 0.15);
+}
+
 @media (max-width: 900px) {
-	.contact-layout {
+	.contact-layout,
+	.faq-list {
 		grid-template-columns: 1fr;
 	}
 }

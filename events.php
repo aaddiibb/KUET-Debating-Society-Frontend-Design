@@ -105,9 +105,24 @@ $isLoggedIn = $memberId !== null;
 			</div>
 		<?php endif; ?>
 
+		<?php if (!$isLoggedIn): ?>
+			<div class="wrap" style="padding-top: 20px;">
+				<div class="guest-callout">
+					<div>
+						<strong>Want to register for events?</strong>
+						<span>Create a free member account or log in to secure your spot at any upcoming event.</span>
+					</div>
+					<div class="guest-callout-actions">
+						<a class="btn btn-primary" href="signup.html">Sign Up Free</a>
+						<a class="btn btn-ghost" href="login.html">Log In</a>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
+
 		<section class="wrap reveal delay-1" id="events">
 			<h2 class="section-title">Upcoming Events</h2>
-			<p class="section-sub">Events on or after today — register to secure your spot.</p>
+			<p class="section-sub">Events on or after today — log in and register to secure your spot.</p>
 
 			<div class="events-grid" id="upcoming-events-grid">
 				<?php if ($upcomingEvents === []): ?>
@@ -160,5 +175,13 @@ $isLoggedIn = $memberId !== null;
 			KUET Debating Society | Khulna University of Engineering &amp; Technology, Bangladesh
 		</div>
 	</footer>
+
+	<script>
+		(function () {
+			if (window.location.search) {
+				window.history.replaceState({}, '', window.location.pathname);
+			}
+		})();
+	</script>
 </body>
 </html>

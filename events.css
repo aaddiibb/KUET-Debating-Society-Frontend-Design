@@ -76,8 +76,45 @@
 	background: #e5ece9;
 }
 
+.guest-callout {
+	background: #f0f6f4;
+	border: 1px solid #c9ddd8;
+	border-left: 4px solid var(--highlight);
+	border-radius: 12px;
+	padding: 16px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.guest-callout strong {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	display: block;
+	margin-bottom: 2px;
+	color: var(--ink);
+}
+
+.guest-callout span {
+	color: var(--muted);
+	font-size: 0.93rem;
+}
+
+.guest-callout-actions {
+	display: flex;
+	gap: 10px;
+	flex-shrink: 0;
+}
+
 @media (max-width: 900px) {
 	.events-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.guest-callout {
+		flex-direction: column;
+		align-items: flex-start;
 	}
 }

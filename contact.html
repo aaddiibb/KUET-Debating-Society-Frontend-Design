@@ -22,15 +22,16 @@
 				</nav>
 			</div>
 			<h1>Contact KUET Debating Society</h1>
-			<p class="tagline">Questions, collaborations, or membership interest &mdash; we would love to hear from you.</p>
+			<p class="tagline">Questions, collaborations, or membership interest &mdash; reach out anytime.</p>
 			<p>
-				Use the contact form below to send your message to the club committee. We usually respond
-				within two working days.
+				Use the form below to send your message to the club committee. For urgent matters,
+				email us directly at kds@kuet.ac.bd. We respond within two working days.
 			</p>
 		</div>
 	</header>
 
 	<main>
+		<!-- Contact form + info -->
 		<section class="wrap reveal delay-1" aria-labelledby="contact-form-title">
 			<h2 class="section-title" id="contact-form-title">Send a Message</h2>
 
@@ -38,27 +39,88 @@
 
 			<div class="contact-layout">
 				<article class="card contact-info">
-					<h3>Reach Out</h3>
-					<p>Email: kds@kuet.ac.bd</p>
-					<p>Office: Student Activity Center, KUET</p>
-					<p>Meeting Day: Thursday, 4:30 PM</p>
+					<h3>Find Us</h3>
+					<ul class="contact-details">
+						<li>
+							<span class="detail-label">Email</span>
+							<a href="mailto:kds@kuet.ac.bd" class="detail-value">kds@kuet.ac.bd</a>
+						</li>
+						<li>
+							<span class="detail-label">Office</span>
+							<span class="detail-value">Student Activity Center, Room 204, KUET Campus</span>
+						</li>
+						<li>
+							<span class="detail-label">Practice</span>
+							<span class="detail-value">Every Thursday, 4:30 PM &mdash; 7:00 PM</span>
+						</li>
+						<li>
+							<span class="detail-label">Office Hours</span>
+							<span class="detail-value">Sunday &ndash; Thursday, 2:00 PM &ndash; 5:00 PM</span>
+						</li>
+					</ul>
+
+					<h3 style="margin-top: 22px;">Follow Us</h3>
+					<ul class="social-list">
+						<li><a href="#" class="social-link">Facebook &mdash; /KUETDebatingSociety</a></li>
+						<li><a href="#" class="social-link">Instagram &mdash; @kds_kuet</a></li>
+						<li><a href="#" class="social-link">YouTube &mdash; KDS KUET</a></li>
+					</ul>
 				</article>
 
 				<form class="card contact-form" action="contact.php" method="post">
-					<label for="name">Name</label>
+					<label for="name">Full Name</label>
 					<input type="text" id="name" name="name" placeholder="Your full name" required>
 
-					<label for="email">Email</label>
+					<label for="email">Email Address</label>
 					<input type="email" id="email" name="email" placeholder="you@example.com" required>
 
 					<label for="subject">Subject</label>
-					<input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+					<select id="subject" name="subject" required>
+						<option value="" disabled selected>Select a subject</option>
+						<option value="Membership Inquiry">Membership Inquiry</option>
+						<option value="Event Collaboration">Event Collaboration</option>
+						<option value="Sponsorship & Partnership">Sponsorship &amp; Partnership</option>
+						<option value="Media & Press">Media &amp; Press</option>
+						<option value="General Question">General Question</option>
+					</select>
 
 					<label for="message">Message</label>
 					<textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
 
 					<button type="submit" class="send-btn">Send Message</button>
 				</form>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="wrap reveal delay-2" aria-labelledby="faq-title">
+			<h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+			<p class="section-sub">Can&rsquo;t find what you need above? Here are the questions we hear most often.</p>
+			<div class="faq-list">
+				<article class="card faq-card">
+					<h3>Who can join KUET Debating Society?</h3>
+					<p>Any currently enrolled KUET student can join. No prior debate experience is required &mdash; only a willingness to learn and participate. We welcome students from all departments and all years.</p>
+				</article>
+				<article class="card faq-card">
+					<h3>Is there a membership fee?</h3>
+					<p>Membership is completely free. Some external competitions carry registration fees, but KDS covers or subsidizes these for selected members representing KUET.</p>
+				</article>
+				<article class="card faq-card">
+					<h3>How do I get selected for national tournaments?</h3>
+					<p>Selection is based on attendance at weekly sessions, performance in internal tournaments, and evaluation by the Training Coordinator. Any member who commits to practice is eligible to try out.</p>
+				</article>
+				<article class="card faq-card">
+					<h3>I have no experience &mdash; can I still join?</h3>
+					<p>Absolutely. We run a dedicated Freshers Orientation Tournament each semester specifically for new members. Senior members will guide you through the basics before your first round.</p>
+				</article>
+				<article class="card faq-card">
+					<h3>Can I collaborate with KDS for an event or workshop?</h3>
+					<p>Yes. We welcome collaborations with other departments, student bodies, and organizations. Use the contact form above and select &ldquo;Event Collaboration&rdquo; as the subject.</p>
+				</article>
+				<article class="card faq-card">
+					<h3>How do I become an adjudicator?</h3>
+					<p>Adjudicator training is open to all members with at least one semester of active participation. Contact the Training Coordinator through the form above to express interest.</p>
+				</article>
 			</div>
 		</section>
 	</main>

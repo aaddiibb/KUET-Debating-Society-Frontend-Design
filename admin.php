@@ -18,6 +18,14 @@ $members = $pdo->query('SELECT id, full_name, student_id, department, email, cre
 $events  = $pdo->query('SELECT id, event_name, event_date, description, created_at FROM events ORDER BY event_date ASC')->fetchAll();
 $notices = $pdo->query('SELECT id, notice_title, notice_body, created_at FROM notices ORDER BY created_at DESC')->fetchAll();
 
+$totalRegistrations = (int) $pdo->query('SELECT COUNT(*) FROM registrations')->fetchColumn();
+
+$today = (new DateTimeImmutable('today'))->format('Y-m-d');
+$upcomingCount = (int) $pdo->prepare('SELECT COUNT(*) FROM events WHERE event_date >= :today')->execute(['today' => $today]);
+$upcomingStmt  = $pdo->prepare('SELECT COUNT(*) FROM events WHERE event_date >= :today');
+$upcomingStmt->execute(['today' => $today]);
+$upcomingCount = (int) $upcomingStmt->fetchColumn();
+
 $flash = (string) ($_GET['msg'] ?? '');
 $flashType = (string) ($_GET['type'] ?? 'success');
 ?>
@@ -49,6 +57,30 @@ $flashType = (string) ($_GET['type'] ?? 'success');
 			<?php if ($flash !== ''): ?>
 				<p class="admin-flash <?= escape_html($flashType) ?>" role="alert"><?= escape_html($flash) ?></p>
 			<?php endif; ?>
+
+			<!-- Summary Stats -->
+			<section class="admin-stats" aria-label="Summary statistics">
+				<div class="admin-stat-card">
+					<span class="admin-stat-value"><?= count($members) ?></span>
+					<span class="admin-stat-label">Total Members</span>
+				</div>
+				<div class="admin-stat-card">
+					<span class="admin-stat-value"><?= count($events) ?></span>
+					<span class="admin-stat-label">Total Events</span>
+				</div>
+				<div class="admin-stat-card">
+					<span class="admin-stat-value"><?= $upcomingCount ?></span>
+					<span class="admin-stat-label">Upcoming Events</span>
+				</div>
+				<div class="admin-stat-card">
+					<span class="admin-stat-value"><?= $totalRegistrations ?></span>
+					<span class="admin-stat-label">Total Registrations</span>
+				</div>
+				<div class="admin-stat-card">
+					<span class="admin-stat-value"><?= count($notices) ?></span>
+					<span class="admin-stat-label">Active Notices</span>
+				</div>
+			</section>
 
 			<!-- Members -->
 			<section class="admin-section" aria-labelledby="members-title">

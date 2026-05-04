@@ -1,15 +1,17 @@
 /* Shared theme for all non-auth pages (home, events, about, contact, dashboard, profile). */
 
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Space+Grotesk:wght@400;700&display=swap');
+
 :root {
 	--bg: #f7f3e9;
-	--panel: #fffdf7;
+	--panel: #e8dfc8;
 	--ink: #1d2a44;
 	--muted: #4f5f78;
 	--accent: #d89a27;
 	--accent-deep: #b67914;
 	--highlight: #2d8f8b;
-	--line: #d7d3c8;
-	--shadow: 0 14px 36px rgba(29, 42, 68, 0.12);
+	--line: #c9c0ae;
+	--shadow: 0 14px 36px rgba(29, 42, 68, 0.18);
 }
 
 * {

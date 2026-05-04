@@ -25,6 +25,39 @@ body {
 	color: var(--accent-deep);
 }
 
+/* ── Summary stats ── */
+
+.admin-stats {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 12px;
+	margin-bottom: 36px;
+}
+
+.admin-stat-card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: 16px;
+	text-align: center;
+}
+
+.admin-stat-value {
+	display: block;
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--highlight);
+}
+
+.admin-stat-label {
+	display: block;
+	font-size: 0.8rem;
+	color: var(--muted);
+	margin-top: 2px;
+	font-family: "Space Grotesk", sans-serif;
+}
+
 /* ── Tables ── */
 
 .admin-table {
@@ -185,10 +218,20 @@ body {
 
 /* ── Responsive ── */
 
+@media (max-width: 900px) {
+	.admin-stats {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
 @media (max-width: 700px) {
 	.topbar-inner {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	.admin-stats {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.admin-table {

@@ -98,6 +98,132 @@
 	justify-content: center;
 }
 
+.step-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.step-number {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--line);
+	margin-bottom: 8px;
+	line-height: 1;
+}
+
+.step-link {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	color: var(--highlight);
+	text-decoration: none;
+	margin-top: auto;
+	padding-top: 12px;
+	font-size: 0.95rem;
+}
+
+.step-link:hover {
+	text-decoration: underline;
+}
+
+.benefits-list {
+	list-style: none;
+	display: grid;
+	gap: 10px;
+	max-width: 640px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.benefits-list li {
+	padding-left: 22px;
+	position: relative;
+	color: var(--muted);
+}
+
+.benefits-list li::before {
+	content: "✓";
+	position: absolute;
+	left: 0;
+	color: var(--highlight);
+	font-weight: 700;
+}
+
+.achievement-gallery {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+	margin-top: 28px;
+}
+
+.achievement-figure {
+	margin: 0;
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-top: 3px solid var(--accent);
+	border-radius: 12px;
+	padding: 14px 14px 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	box-shadow: 0 4px 14px rgba(29, 42, 68, 0.09);
+	transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.achievement-figure:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 28px rgba(29, 42, 68, 0.14);
+}
+
+.achievement-caption {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: var(--ink);
+	line-height: 1.35;
+}
+
+.achievement-img {
+	width: 100%;
+	max-width: 800px;
+	height: 400px;
+	object-fit: cover;
+	border-radius: 7px;
+	margin-inline: auto;
+	display: block;
+}
+
+@media (max-width: 700px) {
+	.achievement-gallery {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.footer-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 14px;
+}
+
+.footer-nav {
+	display: flex;
+	gap: 16px;
+}
+
+.footer-nav a {
+	color: var(--muted);
+	text-decoration: none;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+
+.footer-nav a:hover {
+	color: var(--ink);
+}
+
 @media (max-width: 900px) {
 	.grid {
 		grid-template-columns: 1fr;
@@ -105,5 +231,10 @@
 
 	.about {
 		grid-template-columns: 1fr;
+	}
+
+	.footer-inner {
+		flex-direction: column;
+		align-items: flex-start;
 	}
 }

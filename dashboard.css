@@ -37,7 +37,7 @@ body {
 
 .cards-section {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 16px;
 }
 
@@ -93,8 +93,92 @@ body {
 	color: var(--accent-deep);
 }
 
+.quick-stats {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.stat-card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 4px;
+}
+
+.stat-value {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--highlight);
+}
+
+.stat-label {
+	font-size: 0.82rem;
+	color: var(--muted);
+	font-family: "Space Grotesk", sans-serif;
+}
+
+.stat-action {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.9rem;
+	color: var(--ink);
+	text-decoration: none;
+	line-height: 1.4;
+}
+
+.stat-action:hover {
+	color: var(--highlight);
+}
+
+.inline-link {
+	color: var(--highlight);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.inline-link:hover {
+	text-decoration: underline;
+}
+
+.card-footer-link {
+	display: block;
+	margin-top: 14px;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.88rem;
+	color: var(--highlight);
+	text-decoration: none;
+}
+
+.card-footer-link:hover {
+	text-decoration: underline;
+}
+
+.item-date {
+	display: block;
+	color: var(--accent-deep);
+	font-size: 0.82rem;
+	margin-top: 2px;
+	font-family: "Space Grotesk", sans-serif;
+}
+
 @media (max-width: 980px) {
-	.cards-section {
+	.quick-stats {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.cards-section,
+	.quick-stats {
 		grid-template-columns: 1fr;
 	}
 }

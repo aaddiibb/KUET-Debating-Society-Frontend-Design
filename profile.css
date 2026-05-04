@@ -68,6 +68,144 @@ body {
 	color: var(--accent-deep);
 }
 
+.profile-layout {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap: 16px;
+	margin-bottom: 0;
+}
+
+.activity-card h2 {
+	font-size: 1.25rem;
+	margin-bottom: 16px;
+}
+
+.activity-stats {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.activity-stat {
+	background: #f0f6f4;
+	border: 1px solid #c9ddd8;
+	border-radius: 10px;
+	padding: 14px 10px;
+	text-align: center;
+}
+
+.activity-value {
+	display: block;
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.7rem;
+	font-weight: 700;
+	color: var(--highlight);
+}
+
+.activity-label {
+	display: block;
+	font-size: 0.8rem;
+	color: var(--muted);
+	margin-top: 2px;
+	font-family: "Space Grotesk", sans-serif;
+}
+
+.activity-empty {
+	color: var(--muted);
+	font-size: 0.93rem;
+}
+
+.events-section {
+	padding-top: 28px;
+	padding-bottom: 48px;
+}
+
+.section-heading {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.25rem;
+	margin-bottom: 14px;
+}
+
+.events-table-wrap {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	box-shadow: var(--shadow);
+	overflow: hidden;
+}
+
+.events-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.93rem;
+}
+
+.events-table th {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	text-align: left;
+	padding: 10px 14px;
+	background: #f0ece0;
+	border-bottom: 2px solid var(--line);
+	color: var(--accent-deep);
+}
+
+.events-table td {
+	padding: 10px 14px;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+}
+
+.events-table tr:last-child td {
+	border-bottom: none;
+}
+
+.event-name-cell {
+	display: block;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	margin-bottom: 2px;
+}
+
+.event-desc-cell {
+	display: block;
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+
+.badge {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.78rem;
+	padding: 3px 10px;
+	border-radius: 999px;
+	white-space: nowrap;
+}
+
+.badge-upcoming {
+	background: #ecf8ef;
+	color: #1f6b36;
+	border: 1px solid #bfe3c8;
+}
+
+.badge-completed {
+	background: #f0ece0;
+	color: var(--accent-deep);
+	border: 1px solid var(--line);
+}
+
+.inline-link {
+	color: var(--highlight);
+	font-weight: 700;
+	font-family: "Space Grotesk", sans-serif;
+	text-decoration: none;
+}
+
+.inline-link:hover {
+	text-decoration: underline;
+}
+
 @media (max-width: 600px) {
 	.topbar-inner {
 		flex-direction: column;
@@ -80,5 +218,13 @@ body {
 
 	.card {
 		padding: 18px;
+	}
+
+	.profile-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.activity-stats {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
