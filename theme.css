@@ -1,0 +1,346 @@
+/* Shared theme for all non-auth pages (home, events, about, contact, dashboard, profile). */
+
+:root {
+	--bg: #f7f3e9;
+	--panel: #fffdf7;
+	--ink: #1d2a44;
+	--muted: #4f5f78;
+	--accent: #d89a27;
+	--accent-deep: #b67914;
+	--highlight: #2d8f8b;
+	--line: #d7d3c8;
+	--shadow: 0 14px 36px rgba(29, 42, 68, 0.12);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Merriweather", serif;
+	background:
+		radial-gradient(circle at 15% 15%, rgba(45, 143, 139, 0.1), transparent 40%),
+		radial-gradient(circle at 85% 10%, rgba(216, 154, 39, 0.18), transparent 38%),
+		linear-gradient(180deg, #fbf7ef 0%, #f2ece0 100%);
+	color: var(--ink);
+	line-height: 1.6;
+}
+
+.wrap {
+	width: min(1100px, 92%);
+	margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Space Grotesk", sans-serif;
+	line-height: 1.2;
+}
+
+/* ── Hero (home, events, about, contact) ── */
+
+.hero {
+	position: relative;
+	overflow: hidden;
+	padding: 88px 0 74px;
+	border-bottom: 1px solid var(--line);
+}
+
+.hero::before,
+.hero::after {
+	content: "";
+	position: absolute;
+	border-radius: 999px;
+	z-index: -1;
+}
+
+.hero::before {
+	width: 300px;
+	height: 300px;
+	background: rgba(45, 143, 139, 0.14);
+	top: -120px;
+	right: -80px;
+	animation: drift 9s ease-in-out infinite;
+}
+
+.hero::after {
+	width: 240px;
+	height: 240px;
+	background: rgba(216, 154, 39, 0.18);
+	bottom: -120px;
+	left: -60px;
+	animation: drift 10s ease-in-out infinite reverse;
+}
+
+.hero h1 {
+	font-size: clamp(2rem, 5.2vw, 3.4rem);
+	margin-bottom: 12px;
+	max-width: 760px;
+}
+
+.hero p {
+	max-width: 760px;
+	color: var(--muted);
+	margin-bottom: 24px;
+}
+
+.tagline {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+	color: var(--highlight);
+	margin-bottom: 14px;
+	letter-spacing: 0.03em;
+}
+
+/* ── Brand ── */
+
+.brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: var(--accent-deep);
+	text-transform: uppercase;
+}
+
+.brand-mark {
+	width: 18px;
+	height: 18px;
+	border: 2px solid var(--accent-deep);
+	transform: rotate(45deg);
+}
+
+/* ── Buttons ── */
+
+.cta-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.btn {
+	font-family: "Space Grotesk", sans-serif;
+	display: inline-block;
+	text-decoration: none;
+	font-weight: 700;
+	border-radius: 999px;
+	padding: 12px 20px;
+	transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn-primary {
+	background: var(--accent);
+	color: #10213f;
+	box-shadow: 0 9px 24px rgba(216, 154, 39, 0.28);
+}
+
+.btn-secondary {
+	background: #e5ece9;
+	color: var(--ink);
+	border: 1px solid #bfd3ce;
+}
+
+.btn-ghost {
+	background: transparent;
+	border: 1px solid var(--ink);
+	color: var(--ink);
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.btn-primary:hover {
+	background: #efb342;
+	box-shadow: 0 12px 28px rgba(216, 154, 39, 0.34);
+}
+
+/* ── Content sections ── */
+
+section {
+	padding: 54px 0;
+}
+
+.section-title {
+	font-size: clamp(1.45rem, 3vw, 2rem);
+	margin-bottom: 16px;
+}
+
+.section-sub {
+	color: var(--muted);
+	margin-bottom: 20px;
+	max-width: 760px;
+}
+
+.card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	box-shadow: var(--shadow);
+	padding: 18px;
+}
+
+.event-date {
+	font-family: "Space Grotesk", sans-serif;
+	color: var(--accent-deep);
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+footer {
+	padding: 22px 0 34px;
+	border-top: 1px solid var(--line);
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+/* ── Topbar (dashboard, profile) ── */
+
+.topbar {
+	border-bottom: 1px solid var(--line);
+	backdrop-filter: blur(3px);
+	background: rgba(255, 253, 247, 0.75);
+}
+
+.topbar-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 0;
+	gap: 12px;
+}
+
+.topbar-nav {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.topbar-link {
+	font-family: "Space Grotesk", sans-serif;
+	text-decoration: none;
+	font-weight: 700;
+	color: var(--ink);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: 8px 16px;
+	background: var(--panel);
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.topbar-link:hover {
+	transform: translateY(-2px);
+	background: #eef4f2;
+}
+
+/* Keep .logout-link as alias for topbar-link for backward compatibility */
+.logout-link {
+	font-family: "Space Grotesk", sans-serif;
+	text-decoration: none;
+	font-weight: 700;
+	color: var(--ink);
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	padding: 8px 16px;
+	background: var(--panel);
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.logout-link:hover {
+	transform: translateY(-2px);
+	background: #eef4f2;
+}
+
+/* ── Navbar (about, contact) ── */
+
+.top-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+}
+
+.navbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.nav-link {
+	font-family: "Space Grotesk", sans-serif;
+	text-decoration: none;
+	font-weight: 700;
+	border-radius: 999px;
+	padding: 9px 16px;
+	border: 1px solid var(--line);
+	color: var(--ink);
+	background: var(--panel);
+	transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-link:hover {
+	transform: translateY(-2px);
+	background: #eef4f2;
+}
+
+.nav-link.active {
+	background: var(--accent);
+	border-color: transparent;
+	color: #10213f;
+	box-shadow: 0 9px 24px rgba(216, 154, 39, 0.28);
+}
+
+/* ── Flash messages ── */
+
+.flash-banner {
+	font-size: 0.92rem;
+	font-weight: 700;
+	padding: 10px 14px;
+	border-radius: 10px;
+	margin-bottom: 18px;
+	border: 1px solid transparent;
+}
+
+.flash-success {
+	color: #1f6b36;
+	background: #ecf8ef;
+	border-color: #bfe3c8;
+}
+
+.flash-error {
+	color: #b42318;
+	background: #fef3f2;
+	border-color: #fecdca;
+}
+
+/* ── Animations ── */
+
+.reveal {
+	opacity: 0;
+	transform: translateY(16px);
+	animation: reveal 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+
+@keyframes reveal {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes drift {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-12px); }
+}

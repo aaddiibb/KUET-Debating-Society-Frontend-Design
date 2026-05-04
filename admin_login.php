@@ -14,7 +14,8 @@ $password = (string) ($_POST['password'] ?? '');
 
 // Default credentials (change these before deploying anywhere public).
 $adminUsername = 'admin';
-$adminPasswordHash = '$2y$10$D/6OkAJP2Ig04AgTdiVaTeF43tcYJCmMvd8wC0KpUXOR5Rn9ZnVUG'; // admin12345
+// To change the password, generate a new hash: password_hash('your-new-password', PASSWORD_DEFAULT)
+$adminPasswordHash = '$2y$10$D/6OkAJP2Ig04AgTdiVaTeF43tcYJCmMvd8wC0KpUXOR5Rn9ZnVUG';
 
 if ($username === '' || $password === '') {
     header('Location: admin_login.html?error=' . rawurlencode('Please enter both username and password.'));

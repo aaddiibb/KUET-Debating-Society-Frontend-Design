@@ -1,91 +1,7 @@
-:root {
-	--bg: #f7f3e9;
-	--panel: #fffdf7;
-	--ink: #1d2a44;
-	--muted: #4f5f78;
-	--accent: #d89a27;
-	--accent-deep: #b67914;
-	--highlight: #2d8f8b;
-	--line: #d7d3c8;
-	--shadow: 0 14px 36px rgba(29, 42, 68, 0.12);
-}
-
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
+/* Page-specific styles for dashboard.php — shared base is in theme.css. */
 
 body {
-	font-family: "Merriweather", serif;
-	background:
-		radial-gradient(circle at 15% 15%, rgba(45, 143, 139, 0.1), transparent 40%),
-		radial-gradient(circle at 85% 10%, rgba(216, 154, 39, 0.18), transparent 38%),
-		linear-gradient(180deg, #fbf7ef 0%, #f2ece0 100%);
-	color: var(--ink);
-	line-height: 1.6;
 	min-height: 100vh;
-}
-
-.wrap {
-	width: min(1100px, 92%);
-	margin: 0 auto;
-}
-
-h1,
-h2,
-h3 {
-	font-family: "Space Grotesk", sans-serif;
-	line-height: 1.2;
-}
-
-.topbar {
-	border-bottom: 1px solid var(--line);
-	backdrop-filter: blur(3px);
-	background: rgba(255, 253, 247, 0.75);
-}
-
-.topbar-inner {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 16px 0;
-	gap: 12px;
-}
-
-.brand {
-	display: inline-flex;
-	align-items: center;
-	gap: 12px;
-	font-family: "Space Grotesk", sans-serif;
-	font-weight: 700;
-	letter-spacing: 0.04em;
-	color: var(--accent-deep);
-	text-transform: uppercase;
-}
-
-.brand-mark {
-	width: 18px;
-	height: 18px;
-	border: 2px solid var(--accent-deep);
-	transform: rotate(45deg);
-}
-
-.logout-link {
-	font-family: "Space Grotesk", sans-serif;
-	text-decoration: none;
-	font-weight: 700;
-	color: var(--ink);
-	border: 1px solid var(--line);
-	border-radius: 999px;
-	padding: 8px 16px;
-	background: var(--panel);
-	transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.logout-link:hover {
-	transform: translateY(-2px);
-	background: #eef4f2;
 }
 
 .dashboard-main {
@@ -123,14 +39,6 @@ h3 {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 16px;
-}
-
-.card {
-	background: var(--panel);
-	border: 1px solid var(--line);
-	border-radius: 14px;
-	box-shadow: var(--shadow);
-	padding: 18px;
 }
 
 .info-card h2 {
@@ -183,23 +91,6 @@ h3 {
 	font-family: "Space Grotesk", sans-serif;
 	font-weight: 700;
 	color: var(--accent-deep);
-}
-
-.reveal {
-	opacity: 0;
-	transform: translateY(16px);
-	animation: reveal 0.8s ease forwards;
-}
-
-.delay-1 {
-	animation-delay: 0.08s;
-}
-
-@keyframes reveal {
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
 @media (max-width: 980px) {

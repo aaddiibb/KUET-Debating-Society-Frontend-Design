@@ -15,24 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require __DIR__ . '/db.php';
-
-function ensure_notices_table(PDO $pdo): void
-{
-    $pdo->exec(
-        'CREATE TABLE IF NOT EXISTS notices (
-            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            notice_title VARCHAR(255) NOT NULL,
-            notice_body TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
-    );
-}
+require __DIR__ . '/includes/functions.php';
 
 $noticeTitle = trim((string) ($_POST['notice_title'] ?? ''));
-$noticeBody = trim((string) ($_POST['notice_body'] ?? ''));
+$noticeBody  = trim((string) ($_POST['notice_body'] ?? ''));
 
 if ($noticeTitle === '' || $noticeBody === '') {
-    header('Location: admin.php');
+    header('Location: admin.php?msg=' . rawurlencode('Both title and body are required.') . '&type=error');
     exit;
 }
 
@@ -43,8 +32,8 @@ $insert = $pdo->prepare(
 );
 $insert->execute([
     'notice_title' => $noticeTitle,
-    'notice_body' => $noticeBody,
+    'notice_body'  => $noticeBody,
 ]);
 
-header('Location: admin.php');
+header('Location: admin.php?msg=' . rawurlencode('Notice added successfully.') . '&type=success');
 exit;

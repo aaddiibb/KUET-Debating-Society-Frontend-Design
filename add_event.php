@@ -15,26 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 require __DIR__ . '/db.php';
+require __DIR__ . '/includes/functions.php';
 
-function ensure_events_table(PDO $pdo): void
-{
-    $pdo->exec(
-        'CREATE TABLE IF NOT EXISTS events (
-            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            event_name VARCHAR(255) NOT NULL,
-            event_date DATE NOT NULL,
-            description TEXT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'
-    );
-}
-
-$eventName = trim((string) ($_POST['event_name'] ?? ''));
-$eventDate = trim((string) ($_POST['event_date'] ?? ''));
+$eventName   = trim((string) ($_POST['event_name'] ?? ''));
+$eventDate   = trim((string) ($_POST['event_date'] ?? ''));
 $description = trim((string) ($_POST['description'] ?? ''));
 
 if ($eventName === '' || $eventDate === '' || $description === '') {
-    header('Location: admin.php');
+    header('Location: admin.php?msg=' . rawurlencode('All fields are required.') . '&type=error');
+    exit;
+}
+
+if (DateTimeImmutable::createFromFormat('Y-m-d', $eventDate) === false) {
+    header('Location: admin.php?msg=' . rawurlencode('Invalid event date format.') . '&type=error');
     exit;
 }
 
@@ -44,10 +37,10 @@ $insert = $pdo->prepare(
     'INSERT INTO events (event_name, event_date, description) VALUES (:event_name, :event_date, :description)'
 );
 $insert->execute([
-    'event_name' => $eventName,
-    'event_date' => $eventDate,
+    'event_name'  => $eventName,
+    'event_date'  => $eventDate,
     'description' => $description,
 ]);
 
-header('Location: admin.php');
+header('Location: admin.php?msg=' . rawurlencode('Event added successfully.') . '&type=success');
 exit;
